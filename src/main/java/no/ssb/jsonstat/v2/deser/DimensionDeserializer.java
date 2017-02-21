@@ -1,14 +1,14 @@
 /**
  * Copyright (C) 2016 Hadrien Kohl (hadrien.kohl@gmail.com) and contributors
- *
- *     DimensionDeserializer.java
- *
+ * <p>
+ * DimensionDeserializer.java
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -150,7 +150,7 @@ public class DimensionDeserializer extends StdDeserializer<Dimension.Builder> {
     }
 
     private Map<String, String> parseCategoryLabel(JsonParser p, DeserializationContext ctxt) throws IOException {
-        if (p.currentToken() != JsonToken.START_OBJECT)
+        if (p.getCurrentToken() != JsonToken.START_OBJECT)
             ctxt.reportWrongTokenException(
                     p, JsonToken.START_OBJECT,
                     "label was not an object", (Object) null
@@ -193,7 +193,7 @@ public class DimensionDeserializer extends StdDeserializer<Dimension.Builder> {
         // Index can either be an array or object with id values. Here we transform
         // both to array.
         ImmutableMap<String, String> index = null;
-        JsonToken token = p.currentToken();
+        JsonToken token = p.getCurrentToken();
         if (token == JsonToken.START_ARRAY)
             index = parseIndexAsArray(p);
         else if (token == JsonToken.START_OBJECT)
